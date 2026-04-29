@@ -40,6 +40,10 @@ export class UsuarioController {
       const { username, password, role } = req.body;
 
       const repo = AppDataSource.getRepository(Usuario);
+      
+      if (!password) {
+        return res.status(400).json({ message: "La contraseña es obligatoria para crear un usuario" });
+      }
 
       // Verificar si el username ya existe
       const existingUser = await repo.findOneBy({ username });

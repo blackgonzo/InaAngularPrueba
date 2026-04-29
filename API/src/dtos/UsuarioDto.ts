@@ -27,9 +27,9 @@ export class createUpateUsuarioDto {
   @IsNotEmpty({ message: "El nombre de usuario es obligatorio" })
   username: string;
 
+  @IsOptional()
   @MinLength(6, { message: "La contraseña debe tener al menos 6 caracteres" })
   @MaxLength(100, { message: "La contraseña no debe exceder los 100 caracteres" })
-  @IsNotEmpty({ message: "La contraseña es obligatoria" })
   password: string;
 
   @IsEnum(UserRole, { message: "El rol debe ser un valor válido" })
