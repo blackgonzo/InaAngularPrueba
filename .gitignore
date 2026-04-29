@@ -1,0 +1,176 @@
+# =========================
+# Node.js
+# =========================
+API/node_modules/
+npm-debug.log*
+API/yarn-debug.log*
+API/yarn-error.log*
+API/pnpm-debug.log*
+
+# =========================
+# TypeScript
+# =========================
+API/dist/
+API/build/
+API/*.tsbuildinfo
+
+# =========================
+# TypeORM
+# =========================
+API/ormconfig.json
+API/.env
+API/.env.*
+API/!.env.example
+
+# =========================
+# Database
+# =========================
+API/*.sqlite
+API/*.sqlite3
+API/*.db
+
+# =========================
+# Coverage / Tests
+# =========================
+API/coverage/
+API/.nyc_output/
+
+# =========================
+# Logs
+# =========================
+API/logs/
+API/*.log
+
+# =========================
+# IDEs / Editors
+# =========================
+API/.vscode/
+API/!.vscode/settings.json
+API/.idea/
+API/*.swp
+
+# =========================
+# OS files
+# =========================
+API/.DS_Store
+API/Thumbs.db
+
+# =========================
+# Temporary files
+# =========================
+API/tmp/
+API/temp/
+
+# =========================
+# Angular / Node
+# =========================
+
+# Dependencias
+node_modules/
+
+# Build output
+dist/
+out-tsc/
+build/
+
+# Angular cache
+.angular/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# =========================
+# Environment files
+# =========================
+
+# Archivos de entorno sensibles
+src/environments/*.ts
+!src/environments/environment.ts
+!src/environments/environment.prod.ts
+
+# =========================
+# Testing
+# =========================
+
+coverage/
+
+# =========================
+# Misc
+# =========================
+
+# Temporary files
+tmp/
+temp/
+
+# Cache
+.cache/
+
+# =========================
+# Angular specific
+# =========================
+
+# Angular CLI
+.angular/cache/
+
+# Firebase (opcional)
+.firebase/
+
+# =========================
+# Package managers
+# =========================
+
+# Lock files (opcional)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# =========================
+# Build tools
+# =========================
+
+# Parcel
+.cache/
+.parcel-cache/
+
+# Next.js (si se mezcla)
+.next/
+
+# Nuxt
+.nuxt/
+
+# =========================
+# Environment variables
+# =========================
+
+.env
+.env.local
+.env.*.local
+
+# =========================
+# Logs
+# =========================
+
+logs
+*.log
+
+# =========================
+# Runtime data
+# =========================
+
+pids
+*.pid
+*.seed
+*.pid.lock

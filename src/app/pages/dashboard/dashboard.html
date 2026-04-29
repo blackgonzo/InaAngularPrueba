@@ -1,0 +1,49 @@
+<div class="dashboard-container">
+  <div class="header">
+    <div class="welcome-text">
+      <h1>Panel de Control</h1>
+      <p>Resumen general del sistema</p>
+    </div>
+    <div class="clock-card">
+      <mat-icon>schedule</mat-icon>
+      <div class="time-info">
+        <span class="label">Hora Actual</span>
+        <span class="value">{{ horaActual() | date: 'hh:mm:ss a' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <mat-card class="stat-card users-card">
+      <mat-card-header>
+        <div mat-card-avatar class="icon-container">
+          <mat-icon>people</mat-icon>
+        </div>
+        <mat-card-title>Usuarios</mat-card-title>
+        <mat-card-subtitle>Registrados en la plataforma</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-value">{{ totalUsuarios() }}</div>
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="card-progress"></div>
+      </mat-card-footer>
+    </mat-card>
+
+    <mat-card class="stat-card categories-card">
+      <mat-card-header>
+        <div mat-card-avatar class="icon-container">
+          <mat-icon>category</mat-icon>
+        </div>
+        <mat-card-title>Categorías</mat-card-title>
+        <mat-card-subtitle>Organización del catálogo</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-value">{{ totalCategorias() }}</div>
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="card-progress"></div>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

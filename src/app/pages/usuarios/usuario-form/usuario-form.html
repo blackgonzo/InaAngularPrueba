@@ -1,0 +1,88 @@
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon>
+    {{ data.isModificar ? 'edit' : data.usuario ? 'visibility' : 'add_circle' }}
+  </mat-icon>
+  <span>
+    {{
+      data.isModificar
+        ? 'Modificar Usuario'
+        : data.usuario
+          ? 'Detalle de Usuario'
+          : 'Crear Usuario'
+    }}
+  </span>
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="form" class="usuario-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" readonly />
+      <mat-icon matSuffix>fingerprint</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="username" placeholder="Ej: usuario@email.com" />
+      <mat-icon matSuffix>email</mat-icon>
+
+      @if (form.get('username')?.hasError('required') && form.get('username')?.touched) {
+        <mat-error>El email es obligatorio</mat-error>
+      }
+      @if (form.get('username')?.hasError('email')) {
+        <mat-error>Debe ser un email válido</mat-error>
+      }
+      @if (form.get('username')?.hasError('minlength')) {
+        <mat-error>Mínimo 6 caracteres</mat-error>
+      }
+      @if (form.get('username')?.hasError('maxlength')) {
+        <mat-error>Máximo 100 caracteres</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password"
+             placeholder="{{ data.isModificar ? 'Dejar en blanco para mantener actual' : 'Ingrese contraseña' }}" />
+      <mat-icon matSuffix>lock</mat-icon>
+
+      @if (form.get('password')?.hasError('required') && form.get('password')?.touched) {
+        <mat-error>La contraseña es obligatoria</mat-error>
+      }
+      @if (form.get('password')?.hasError('minlength')) {
+        <mat-error>Mínimo 6 caracteres</mat-error>
+      }
+      @if (form.get('password')?.hasError('maxlength')) {
+        <mat-error>Máximo 100 caracteres</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="role">
+        @for (role of userRoles; track role.value) {
+          <mat-option [value]="role.value">{{ role.label }}</mat-option>
+        }
+      </mat-select>
+      <mat-icon matSuffix>admin_panel_settings</mat-icon>
+
+      @if (form.get('role')?.hasError('required') && form.get('role')?.touched) {
+        <mat-error>El rol es obligatorio</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-stroked-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+    Cancelar
+  </button>
+
+  @if (!data.usuario || data.isModificar) {
+    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="guardar()">
+      <mat-icon>{{ data.isModificar ? 'save' : 'add' }}</mat-icon>
+      {{ data.isModificar ? 'Guardar' : 'Crear' }}
+    </button>
+  }
+</mat-dialog-actions>
