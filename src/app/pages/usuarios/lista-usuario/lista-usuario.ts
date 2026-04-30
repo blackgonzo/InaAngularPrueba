@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuarioForm } from '../usuario-form/usuario-form';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../services/authServices';
 
 @Component({
   selector: 'app-lista-usuario',
@@ -20,6 +21,7 @@ export class ListaUsuario implements OnInit, AfterViewInit {
   private usuarioService = inject(UsuarioService);
   private dialog = inject(MatDialog);
   private toastr = inject(ToastrService);
+  public authService = inject(AuthService);
 
   displayedColumns: string[] = ['id', 'username', 'role', 'acciones'];
   dataSource = new MatTableDataSource<Usuario>([]);

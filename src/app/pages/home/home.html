@@ -44,9 +44,12 @@
           <mat-icon>notifications</mat-icon>
         </button>
 
-        <button mat-icon-button>
-          <mat-icon>account_circle</mat-icon>
-        </button>
+        <div class="user-info">
+          <span class="user-role">{{ authService.userRole() }}</span>
+          <button mat-icon-button>
+            <mat-icon>account_circle</mat-icon>
+          </button>
+        </div>
 
         <button mat-icon-button (click)="logout()">
           <mat-icon>logout</mat-icon>

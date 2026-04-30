@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoriaForm } from '../categoria-form/categoria-form';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../../services/authServices';
 
 @Component({
   selector: 'app-lista-categoria',
@@ -21,6 +22,7 @@ export class ListaCategoria implements OnInit, AfterViewInit {
   private dialog = inject(MatDialog);
 
   private toastr = inject(ToastrService);
+  public authService = inject(AuthService);
 
   displayedColumns: string[] = ['id', 'nombre', 'acciones'];
   // dataSource!: MatTableDataSource<Categoria>;

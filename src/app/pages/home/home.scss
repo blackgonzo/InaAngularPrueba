@@ -111,3 +111,20 @@
   margin: 0;
   color: #e4e3e3;
 }
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(30, 60, 114, 0.05);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-right: 8px;
+}
+
+.user-role {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e3c72;
+  text-transform: uppercase;
+}

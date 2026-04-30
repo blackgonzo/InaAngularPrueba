@@ -11,8 +11,13 @@ export class AuthService {
   private tokenSignal = signal<string | null>(
     typeof window !== 'undefined' ? localStorage.getItem('token') : null,
   );
+  private roleSignal = signal<string | null>(
+    typeof window !== 'undefined' ? localStorage.getItem('rol') : null,
+  );
 
   isLoggedIn = computed(() => !!this.tokenSignal());
+  userRole = computed(() => this.roleSignal());
+  isAdmin = computed(() => this.roleSignal()?.toLowerCase() === 'admin');
 
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3005/api/auth';
@@ -27,15 +32,17 @@ export class AuthService {
     localStorage.setItem('usuario', resp.user.toString());
     localStorage.setItem('rol', resp.role);
 
-    // Actualizar el signal con el nuevo token
+    // Actualizar los signals
     this.tokenSignal.set(resp.token);
+    this.roleSignal.set(resp.role);
   }
 
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     localStorage.removeItem('rol');
-    this.tokenSignal.set(null); // Limpiar el signal al cerrar sesión
+    this.tokenSignal.set(null); 
+    this.roleSignal.set(null);
   }
 
   // Obtener token
